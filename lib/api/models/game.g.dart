@@ -7,6 +7,8 @@ part of 'game.dart';
 // **************************************************************************
 
 Serializer<Game> _$gameSerializer = new _$GameSerializer();
+Serializer<NameModel> _$nameModelSerializer = new _$NameModelSerializer();
+Serializer<UrlModel> _$urlModelSerializer = new _$UrlModelSerializer();
 
 class _$GameSerializer implements StructuredSerializer<Game> {
   @override
@@ -29,36 +31,30 @@ class _$GameSerializer implements StructuredSerializer<Game> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(GameCategoryEnum)));
     }
-    value = object.cover;
-    if (value != null) {
-      result
-        ..add('cover')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
-    value = object.createdAt;
-    if (value != null) {
-      result
-        ..add('createdAt')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
-    value = object.updatedAt;
-    if (value != null) {
-      result
-        ..add('updatedAt')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
-    value = object.firstReleaseDate;
-    if (value != null) {
-      result
-        ..add('firstReleaseDate')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
     value = object.status;
     if (value != null) {
       result
         ..add('status')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(GameStatusEnum)));
+    }
+    value = object.createdAt;
+    if (value != null) {
+      result
+        ..add('created_at')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.updatedAt;
+    if (value != null) {
+      result
+        ..add('updated_at')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.firstReleaseDate;
+    if (value != null) {
+      result
+        ..add('first_release_date')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     value = object.name;
     if (value != null) {
@@ -88,28 +84,20 @@ class _$GameSerializer implements StructuredSerializer<Game> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.checksum;
+    value = object.cover;
     if (value != null) {
       result
-        ..add('checksum')
+        ..add('cover')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
-    value = object.externalGames;
-    if (value != null) {
-      result
-        ..add('externalGames')
-        ..add(serializers.serialize(value,
-            specifiedType:
-                const FullType(BuiltList, const [const FullType(int)])));
+            specifiedType: const FullType(UrlModel)));
     }
     value = object.gameModes;
     if (value != null) {
       result
-        ..add('gameModes')
+        ..add('game_modes')
         ..add(serializers.serialize(value,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(int)])));
+                const FullType(BuiltList, const [const FullType(NameModel)])));
     }
     value = object.genres;
     if (value != null) {
@@ -117,7 +105,7 @@ class _$GameSerializer implements StructuredSerializer<Game> {
         ..add('genres')
         ..add(serializers.serialize(value,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(int)])));
+                const FullType(BuiltList, const [const FullType(NameModel)])));
     }
     value = object.keywords;
     if (value != null) {
@@ -125,7 +113,7 @@ class _$GameSerializer implements StructuredSerializer<Game> {
         ..add('keywords')
         ..add(serializers.serialize(value,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(int)])));
+                const FullType(BuiltList, const [const FullType(NameModel)])));
     }
     value = object.platforms;
     if (value != null) {
@@ -133,39 +121,7 @@ class _$GameSerializer implements StructuredSerializer<Game> {
         ..add('platforms')
         ..add(serializers.serialize(value,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(int)])));
-    }
-    value = object.releaseDates;
-    if (value != null) {
-      result
-        ..add('releaseDates')
-        ..add(serializers.serialize(value,
-            specifiedType:
-                const FullType(BuiltList, const [const FullType(int)])));
-    }
-    value = object.screenshots;
-    if (value != null) {
-      result
-        ..add('screenshots')
-        ..add(serializers.serialize(value,
-            specifiedType:
-                const FullType(BuiltList, const [const FullType(int)])));
-    }
-    value = object.similarGames;
-    if (value != null) {
-      result
-        ..add('similarGames')
-        ..add(serializers.serialize(value,
-            specifiedType:
-                const FullType(BuiltList, const [const FullType(int)])));
-    }
-    value = object.tags;
-    if (value != null) {
-      result
-        ..add('tags')
-        ..add(serializers.serialize(value,
-            specifiedType:
-                const FullType(BuiltList, const [const FullType(int)])));
+                const FullType(BuiltList, const [const FullType(NameModel)])));
     }
     value = object.themes;
     if (value != null) {
@@ -173,7 +129,15 @@ class _$GameSerializer implements StructuredSerializer<Game> {
         ..add('themes')
         ..add(serializers.serialize(value,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(int)])));
+                const FullType(BuiltList, const [const FullType(NameModel)])));
+    }
+    value = object.screenshots;
+    if (value != null) {
+      result
+        ..add('screenshots')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(UrlModel)])));
     }
     value = object.websites;
     if (value != null) {
@@ -181,7 +145,7 @@ class _$GameSerializer implements StructuredSerializer<Game> {
         ..add('websites')
         ..add(serializers.serialize(value,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(int)])));
+                const FullType(BuiltList, const [const FullType(UrlModel)])));
     }
     return result;
   }
@@ -206,25 +170,21 @@ class _$GameSerializer implements StructuredSerializer<Game> {
                   specifiedType: const FullType(GameCategoryEnum))
               as GameCategoryEnum;
           break;
-        case 'cover':
-          result.cover = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
-          break;
-        case 'createdAt':
-          result.createdAt = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
-          break;
-        case 'updatedAt':
-          result.updatedAt = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
-          break;
-        case 'firstReleaseDate':
-          result.firstReleaseDate = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
-          break;
         case 'status':
           result.status = serializers.deserialize(value,
               specifiedType: const FullType(GameStatusEnum)) as GameStatusEnum;
+          break;
+        case 'created_at':
+          result.createdAt = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'updated_at':
+          result.updatedAt = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'first_release_date':
+          result.firstReleaseDate = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
@@ -242,75 +202,144 @@ class _$GameSerializer implements StructuredSerializer<Game> {
           result.url = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'checksum':
-          result.checksum = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+        case 'cover':
+          result.cover.replace(serializers.deserialize(value,
+              specifiedType: const FullType(UrlModel))! as UrlModel);
           break;
-        case 'externalGames':
-          result.externalGames.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(int)]))!
-              as BuiltList<Object>);
-          break;
-        case 'gameModes':
+        case 'game_modes':
           result.gameModes.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(int)]))!
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(NameModel)]))!
               as BuiltList<Object>);
           break;
         case 'genres':
           result.genres.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(int)]))!
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(NameModel)]))!
               as BuiltList<Object>);
           break;
         case 'keywords':
           result.keywords.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(int)]))!
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(NameModel)]))!
               as BuiltList<Object>);
           break;
         case 'platforms':
           result.platforms.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(int)]))!
-              as BuiltList<Object>);
-          break;
-        case 'releaseDates':
-          result.releaseDates.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(int)]))!
-              as BuiltList<Object>);
-          break;
-        case 'screenshots':
-          result.screenshots.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(int)]))!
-              as BuiltList<Object>);
-          break;
-        case 'similarGames':
-          result.similarGames.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(int)]))!
-              as BuiltList<Object>);
-          break;
-        case 'tags':
-          result.tags.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(int)]))!
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(NameModel)]))!
               as BuiltList<Object>);
           break;
         case 'themes':
           result.themes.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(int)]))!
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(NameModel)]))!
+              as BuiltList<Object>);
+          break;
+        case 'screenshots':
+          result.screenshots.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(UrlModel)]))!
               as BuiltList<Object>);
           break;
         case 'websites':
           result.websites.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(int)]))!
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(UrlModel)]))!
               as BuiltList<Object>);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$NameModelSerializer implements StructuredSerializer<NameModel> {
+  @override
+  final Iterable<Type> types = const [NameModel, _$NameModel];
+  @override
+  final String wireName = 'NameModel';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, NameModel object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(int)),
+    ];
+    Object? value;
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  NameModel deserialize(Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new NameModelBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$UrlModelSerializer implements StructuredSerializer<UrlModel> {
+  @override
+  final Iterable<Type> types = const [UrlModel, _$UrlModel];
+  @override
+  final String wireName = 'UrlModel';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, UrlModel object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.url;
+    if (value != null) {
+      result
+        ..add('url')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  UrlModel deserialize(Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new UrlModelBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'url':
+          result.url = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
       }
     }
@@ -325,15 +354,13 @@ class _$Game extends Game {
   @override
   final GameCategoryEnum? category;
   @override
-  final int? cover;
+  final GameStatusEnum? status;
   @override
   final int? createdAt;
   @override
   final int? updatedAt;
   @override
   final int? firstReleaseDate;
-  @override
-  final GameStatusEnum? status;
   @override
   final String? name;
   @override
@@ -343,29 +370,21 @@ class _$Game extends Game {
   @override
   final String? url;
   @override
-  final String? checksum;
+  final UrlModel? cover;
   @override
-  final BuiltList<int>? externalGames;
+  final BuiltList<NameModel>? gameModes;
   @override
-  final BuiltList<int>? gameModes;
+  final BuiltList<NameModel>? genres;
   @override
-  final BuiltList<int>? genres;
+  final BuiltList<NameModel>? keywords;
   @override
-  final BuiltList<int>? keywords;
+  final BuiltList<NameModel>? platforms;
   @override
-  final BuiltList<int>? platforms;
+  final BuiltList<NameModel>? themes;
   @override
-  final BuiltList<int>? releaseDates;
+  final BuiltList<UrlModel>? screenshots;
   @override
-  final BuiltList<int>? screenshots;
-  @override
-  final BuiltList<int>? similarGames;
-  @override
-  final BuiltList<int>? tags;
-  @override
-  final BuiltList<int>? themes;
-  @override
-  final BuiltList<int>? websites;
+  final BuiltList<UrlModel>? websites;
 
   factory _$Game([void Function(GameBuilder)? updates]) =>
       (new GameBuilder()..update(updates)).build();
@@ -373,26 +392,21 @@ class _$Game extends Game {
   _$Game._(
       {required this.id,
       this.category,
-      this.cover,
+      this.status,
       this.createdAt,
       this.updatedAt,
       this.firstReleaseDate,
-      this.status,
       this.name,
       this.slug,
       this.summary,
       this.url,
-      this.checksum,
-      this.externalGames,
+      this.cover,
       this.gameModes,
       this.genres,
       this.keywords,
       this.platforms,
-      this.releaseDates,
-      this.screenshots,
-      this.similarGames,
-      this.tags,
       this.themes,
+      this.screenshots,
       this.websites})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(id, 'Game', 'id');
@@ -411,26 +425,21 @@ class _$Game extends Game {
     return other is Game &&
         id == other.id &&
         category == other.category &&
-        cover == other.cover &&
+        status == other.status &&
         createdAt == other.createdAt &&
         updatedAt == other.updatedAt &&
         firstReleaseDate == other.firstReleaseDate &&
-        status == other.status &&
         name == other.name &&
         slug == other.slug &&
         summary == other.summary &&
         url == other.url &&
-        checksum == other.checksum &&
-        externalGames == other.externalGames &&
+        cover == other.cover &&
         gameModes == other.gameModes &&
         genres == other.genres &&
         keywords == other.keywords &&
         platforms == other.platforms &&
-        releaseDates == other.releaseDates &&
-        screenshots == other.screenshots &&
-        similarGames == other.similarGames &&
-        tags == other.tags &&
         themes == other.themes &&
+        screenshots == other.screenshots &&
         websites == other.websites;
   }
 
@@ -454,25 +463,29 @@ class _$Game extends Game {
                                                                 $jc(
                                                                     $jc(
                                                                         $jc(
-                                                                            $jc($jc($jc($jc($jc(0, id.hashCode), category.hashCode), cover.hashCode), createdAt.hashCode),
-                                                                                updatedAt.hashCode),
-                                                                            firstReleaseDate.hashCode),
-                                                                        status.hashCode),
-                                                                    name.hashCode),
-                                                                slug.hashCode),
-                                                            summary.hashCode),
-                                                        url.hashCode),
-                                                    checksum.hashCode),
-                                                externalGames.hashCode),
-                                            gameModes.hashCode),
-                                        genres.hashCode),
-                                    keywords.hashCode),
-                                platforms.hashCode),
-                            releaseDates.hashCode),
-                        screenshots.hashCode),
-                    similarGames.hashCode),
-                tags.hashCode),
-            themes.hashCode),
+                                                                            0,
+                                                                            id
+                                                                                .hashCode),
+                                                                        category
+                                                                            .hashCode),
+                                                                    status
+                                                                        .hashCode),
+                                                                createdAt
+                                                                    .hashCode),
+                                                            updatedAt.hashCode),
+                                                        firstReleaseDate
+                                                            .hashCode),
+                                                    name.hashCode),
+                                                slug.hashCode),
+                                            summary.hashCode),
+                                        url.hashCode),
+                                    cover.hashCode),
+                                gameModes.hashCode),
+                            genres.hashCode),
+                        keywords.hashCode),
+                    platforms.hashCode),
+                themes.hashCode),
+            screenshots.hashCode),
         websites.hashCode));
   }
 
@@ -481,26 +494,21 @@ class _$Game extends Game {
     return (newBuiltValueToStringHelper('Game')
           ..add('id', id)
           ..add('category', category)
-          ..add('cover', cover)
+          ..add('status', status)
           ..add('createdAt', createdAt)
           ..add('updatedAt', updatedAt)
           ..add('firstReleaseDate', firstReleaseDate)
-          ..add('status', status)
           ..add('name', name)
           ..add('slug', slug)
           ..add('summary', summary)
           ..add('url', url)
-          ..add('checksum', checksum)
-          ..add('externalGames', externalGames)
+          ..add('cover', cover)
           ..add('gameModes', gameModes)
           ..add('genres', genres)
           ..add('keywords', keywords)
           ..add('platforms', platforms)
-          ..add('releaseDates', releaseDates)
-          ..add('screenshots', screenshots)
-          ..add('similarGames', similarGames)
-          ..add('tags', tags)
           ..add('themes', themes)
+          ..add('screenshots', screenshots)
           ..add('websites', websites))
         .toString();
   }
@@ -517,9 +525,9 @@ class GameBuilder implements Builder<Game, GameBuilder> {
   GameCategoryEnum? get category => _$this._category;
   set category(GameCategoryEnum? category) => _$this._category = category;
 
-  int? _cover;
-  int? get cover => _$this._cover;
-  set cover(int? cover) => _$this._cover = cover;
+  GameStatusEnum? _status;
+  GameStatusEnum? get status => _$this._status;
+  set status(GameStatusEnum? status) => _$this._status = status;
 
   int? _createdAt;
   int? get createdAt => _$this._createdAt;
@@ -533,10 +541,6 @@ class GameBuilder implements Builder<Game, GameBuilder> {
   int? get firstReleaseDate => _$this._firstReleaseDate;
   set firstReleaseDate(int? firstReleaseDate) =>
       _$this._firstReleaseDate = firstReleaseDate;
-
-  GameStatusEnum? _status;
-  GameStatusEnum? get status => _$this._status;
-  set status(GameStatusEnum? status) => _$this._status = status;
 
   String? _name;
   String? get name => _$this._name;
@@ -554,63 +558,47 @@ class GameBuilder implements Builder<Game, GameBuilder> {
   String? get url => _$this._url;
   set url(String? url) => _$this._url = url;
 
-  String? _checksum;
-  String? get checksum => _$this._checksum;
-  set checksum(String? checksum) => _$this._checksum = checksum;
+  UrlModelBuilder? _cover;
+  UrlModelBuilder get cover => _$this._cover ??= new UrlModelBuilder();
+  set cover(UrlModelBuilder? cover) => _$this._cover = cover;
 
-  ListBuilder<int>? _externalGames;
-  ListBuilder<int> get externalGames =>
-      _$this._externalGames ??= new ListBuilder<int>();
-  set externalGames(ListBuilder<int>? externalGames) =>
-      _$this._externalGames = externalGames;
+  ListBuilder<NameModel>? _gameModes;
+  ListBuilder<NameModel> get gameModes =>
+      _$this._gameModes ??= new ListBuilder<NameModel>();
+  set gameModes(ListBuilder<NameModel>? gameModes) =>
+      _$this._gameModes = gameModes;
 
-  ListBuilder<int>? _gameModes;
-  ListBuilder<int> get gameModes =>
-      _$this._gameModes ??= new ListBuilder<int>();
-  set gameModes(ListBuilder<int>? gameModes) => _$this._gameModes = gameModes;
+  ListBuilder<NameModel>? _genres;
+  ListBuilder<NameModel> get genres =>
+      _$this._genres ??= new ListBuilder<NameModel>();
+  set genres(ListBuilder<NameModel>? genres) => _$this._genres = genres;
 
-  ListBuilder<int>? _genres;
-  ListBuilder<int> get genres => _$this._genres ??= new ListBuilder<int>();
-  set genres(ListBuilder<int>? genres) => _$this._genres = genres;
+  ListBuilder<NameModel>? _keywords;
+  ListBuilder<NameModel> get keywords =>
+      _$this._keywords ??= new ListBuilder<NameModel>();
+  set keywords(ListBuilder<NameModel>? keywords) => _$this._keywords = keywords;
 
-  ListBuilder<int>? _keywords;
-  ListBuilder<int> get keywords => _$this._keywords ??= new ListBuilder<int>();
-  set keywords(ListBuilder<int>? keywords) => _$this._keywords = keywords;
+  ListBuilder<NameModel>? _platforms;
+  ListBuilder<NameModel> get platforms =>
+      _$this._platforms ??= new ListBuilder<NameModel>();
+  set platforms(ListBuilder<NameModel>? platforms) =>
+      _$this._platforms = platforms;
 
-  ListBuilder<int>? _platforms;
-  ListBuilder<int> get platforms =>
-      _$this._platforms ??= new ListBuilder<int>();
-  set platforms(ListBuilder<int>? platforms) => _$this._platforms = platforms;
+  ListBuilder<NameModel>? _themes;
+  ListBuilder<NameModel> get themes =>
+      _$this._themes ??= new ListBuilder<NameModel>();
+  set themes(ListBuilder<NameModel>? themes) => _$this._themes = themes;
 
-  ListBuilder<int>? _releaseDates;
-  ListBuilder<int> get releaseDates =>
-      _$this._releaseDates ??= new ListBuilder<int>();
-  set releaseDates(ListBuilder<int>? releaseDates) =>
-      _$this._releaseDates = releaseDates;
-
-  ListBuilder<int>? _screenshots;
-  ListBuilder<int> get screenshots =>
-      _$this._screenshots ??= new ListBuilder<int>();
-  set screenshots(ListBuilder<int>? screenshots) =>
+  ListBuilder<UrlModel>? _screenshots;
+  ListBuilder<UrlModel> get screenshots =>
+      _$this._screenshots ??= new ListBuilder<UrlModel>();
+  set screenshots(ListBuilder<UrlModel>? screenshots) =>
       _$this._screenshots = screenshots;
 
-  ListBuilder<int>? _similarGames;
-  ListBuilder<int> get similarGames =>
-      _$this._similarGames ??= new ListBuilder<int>();
-  set similarGames(ListBuilder<int>? similarGames) =>
-      _$this._similarGames = similarGames;
-
-  ListBuilder<int>? _tags;
-  ListBuilder<int> get tags => _$this._tags ??= new ListBuilder<int>();
-  set tags(ListBuilder<int>? tags) => _$this._tags = tags;
-
-  ListBuilder<int>? _themes;
-  ListBuilder<int> get themes => _$this._themes ??= new ListBuilder<int>();
-  set themes(ListBuilder<int>? themes) => _$this._themes = themes;
-
-  ListBuilder<int>? _websites;
-  ListBuilder<int> get websites => _$this._websites ??= new ListBuilder<int>();
-  set websites(ListBuilder<int>? websites) => _$this._websites = websites;
+  ListBuilder<UrlModel>? _websites;
+  ListBuilder<UrlModel> get websites =>
+      _$this._websites ??= new ListBuilder<UrlModel>();
+  set websites(ListBuilder<UrlModel>? websites) => _$this._websites = websites;
 
   GameBuilder();
 
@@ -619,26 +607,21 @@ class GameBuilder implements Builder<Game, GameBuilder> {
     if ($v != null) {
       _id = $v.id;
       _category = $v.category;
-      _cover = $v.cover;
+      _status = $v.status;
       _createdAt = $v.createdAt;
       _updatedAt = $v.updatedAt;
       _firstReleaseDate = $v.firstReleaseDate;
-      _status = $v.status;
       _name = $v.name;
       _slug = $v.slug;
       _summary = $v.summary;
       _url = $v.url;
-      _checksum = $v.checksum;
-      _externalGames = $v.externalGames?.toBuilder();
+      _cover = $v.cover?.toBuilder();
       _gameModes = $v.gameModes?.toBuilder();
       _genres = $v.genres?.toBuilder();
       _keywords = $v.keywords?.toBuilder();
       _platforms = $v.platforms?.toBuilder();
-      _releaseDates = $v.releaseDates?.toBuilder();
-      _screenshots = $v.screenshots?.toBuilder();
-      _similarGames = $v.similarGames?.toBuilder();
-      _tags = $v.tags?.toBuilder();
       _themes = $v.themes?.toBuilder();
+      _screenshots = $v.screenshots?.toBuilder();
       _websites = $v.websites?.toBuilder();
       _$v = null;
     }
@@ -664,32 +647,27 @@ class GameBuilder implements Builder<Game, GameBuilder> {
           new _$Game._(
               id: BuiltValueNullFieldError.checkNotNull(id, 'Game', 'id'),
               category: category,
-              cover: cover,
+              status: status,
               createdAt: createdAt,
               updatedAt: updatedAt,
               firstReleaseDate: firstReleaseDate,
-              status: status,
               name: name,
               slug: slug,
               summary: summary,
               url: url,
-              checksum: checksum,
-              externalGames: _externalGames?.build(),
+              cover: _cover?.build(),
               gameModes: _gameModes?.build(),
               genres: _genres?.build(),
               keywords: _keywords?.build(),
               platforms: _platforms?.build(),
-              releaseDates: _releaseDates?.build(),
-              screenshots: _screenshots?.build(),
-              similarGames: _similarGames?.build(),
-              tags: _tags?.build(),
               themes: _themes?.build(),
+              screenshots: _screenshots?.build(),
               websites: _websites?.build());
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'externalGames';
-        _externalGames?.build();
+        _$failedField = 'cover';
+        _cover?.build();
         _$failedField = 'gameModes';
         _gameModes?.build();
         _$failedField = 'genres';
@@ -698,16 +676,10 @@ class GameBuilder implements Builder<Game, GameBuilder> {
         _keywords?.build();
         _$failedField = 'platforms';
         _platforms?.build();
-        _$failedField = 'releaseDates';
-        _releaseDates?.build();
-        _$failedField = 'screenshots';
-        _screenshots?.build();
-        _$failedField = 'similarGames';
-        _similarGames?.build();
-        _$failedField = 'tags';
-        _tags?.build();
         _$failedField = 'themes';
         _themes?.build();
+        _$failedField = 'screenshots';
+        _screenshots?.build();
         _$failedField = 'websites';
         _websites?.build();
       } catch (e) {
@@ -716,6 +688,162 @@ class GameBuilder implements Builder<Game, GameBuilder> {
       }
       rethrow;
     }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$NameModel extends NameModel {
+  @override
+  final int id;
+  @override
+  final String? name;
+
+  factory _$NameModel([void Function(NameModelBuilder)? updates]) =>
+      (new NameModelBuilder()..update(updates)).build();
+
+  _$NameModel._({required this.id, this.name}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, 'NameModel', 'id');
+  }
+
+  @override
+  NameModel rebuild(void Function(NameModelBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  NameModelBuilder toBuilder() => new NameModelBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is NameModel && id == other.id && name == other.name;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc($jc(0, id.hashCode), name.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('NameModel')
+          ..add('id', id)
+          ..add('name', name))
+        .toString();
+  }
+}
+
+class NameModelBuilder implements Builder<NameModel, NameModelBuilder> {
+  _$NameModel? _$v;
+
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  NameModelBuilder();
+
+  NameModelBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _name = $v.name;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(NameModel other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$NameModel;
+  }
+
+  @override
+  void update(void Function(NameModelBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$NameModel build() {
+    final _$result = _$v ??
+        new _$NameModel._(
+            id: BuiltValueNullFieldError.checkNotNull(id, 'NameModel', 'id'),
+            name: name);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$UrlModel extends UrlModel {
+  @override
+  final String? url;
+
+  factory _$UrlModel([void Function(UrlModelBuilder)? updates]) =>
+      (new UrlModelBuilder()..update(updates)).build();
+
+  _$UrlModel._({this.url}) : super._();
+
+  @override
+  UrlModel rebuild(void Function(UrlModelBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  UrlModelBuilder toBuilder() => new UrlModelBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is UrlModel && url == other.url;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(0, url.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('UrlModel')..add('url', url))
+        .toString();
+  }
+}
+
+class UrlModelBuilder implements Builder<UrlModel, UrlModelBuilder> {
+  _$UrlModel? _$v;
+
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
+
+  UrlModelBuilder();
+
+  UrlModelBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _url = $v.url;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(UrlModel other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$UrlModel;
+  }
+
+  @override
+  void update(void Function(UrlModelBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$UrlModel build() {
+    final _$result = _$v ?? new _$UrlModel._(url: url);
     replace(_$result);
     return _$result;
   }

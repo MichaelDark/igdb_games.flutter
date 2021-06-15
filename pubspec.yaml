@@ -10,10 +10,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  chopper: ^4.0.1
-  chopper_built_value: ^1.0.0
   built_collection: ^5.1.0
   built_value: ^8.0.6
+  chopper: ^4.0.1
+  chopper_built_value: ^1.0.0
+  get_it: ^7.1.3
+  objectdb: ^1.2.1+1
+  path: ^1.8.0 
+  path_provider: ^2.0.2
 
 dev_dependencies:
   flutter_test:

@@ -15,3 +15,10 @@ part 'serializers.g.dart';
 ])
 Serializers serializers =
     (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
+
+@SerializersFor([
+  Game,
+  GameCategoryEnum,
+  GameStatusEnum,
+])
+Serializers mapSerializers = (_$mapSerializers.toBuilder()).build();
