@@ -1,0 +1,182 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:1188161048857765033",
+      "lastPropertyId": "21:5955397604799266581",
+      "name": "Game",
+      "properties": [
+        {
+          "id": "1:6010584502150195953",
+          "name": "id",
+          "type": 6,
+          "flags": 129
+        },
+        {
+          "id": "10:2676654004554434601",
+          "name": "createdAt",
+          "type": 6
+        },
+        {
+          "id": "11:1816957462286929127",
+          "name": "updatedAt",
+          "type": 6
+        },
+        {
+          "id": "12:286026215416494346",
+          "name": "firstReleaseDate",
+          "type": 6
+        },
+        {
+          "id": "13:661237754508088345",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "14:5966244874299168872",
+          "name": "slug",
+          "type": 9
+        },
+        {
+          "id": "15:1015163196446130733",
+          "name": "summary",
+          "type": 9
+        },
+        {
+          "id": "16:5629190031106107347",
+          "name": "url",
+          "type": 9
+        },
+        {
+          "id": "17:2226532489180600761",
+          "name": "coverUrl",
+          "type": 9
+        },
+        {
+          "id": "20:2170189080815869131",
+          "name": "categoryIndex",
+          "type": 6
+        },
+        {
+          "id": "21:5955397604799266581",
+          "name": "statusIndex",
+          "type": 6
+        }
+      ],
+      "relations": [
+        {
+          "id": "1:7370383403459599715",
+          "name": "gameModes",
+          "targetId": "2:4408454832837012543"
+        },
+        {
+          "id": "2:8512588719044494754",
+          "name": "genres",
+          "targetId": "2:4408454832837012543"
+        },
+        {
+          "id": "3:6693385869418589419",
+          "name": "keywords",
+          "targetId": "2:4408454832837012543"
+        },
+        {
+          "id": "4:8306506497458407972",
+          "name": "platforms",
+          "targetId": "2:4408454832837012543"
+        },
+        {
+          "id": "5:6385419912697898065",
+          "name": "themes",
+          "targetId": "2:4408454832837012543"
+        },
+        {
+          "id": "6:3370398051879661284",
+          "name": "screenshots",
+          "targetId": "3:2635321585101933522"
+        },
+        {
+          "id": "7:8099576207851513150",
+          "name": "websites",
+          "targetId": "3:2635321585101933522"
+        }
+      ]
+    },
+    {
+      "id": "2:4408454832837012543",
+      "lastPropertyId": "4:2976031770471038917",
+      "name": "NameModel",
+      "properties": [
+        {
+          "id": "1:6963866533142417058",
+          "name": "id",
+          "type": 6
+        },
+        {
+          "id": "3:9035979426049370614",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "4:2976031770471038917",
+          "name": "internalId",
+          "type": 6,
+          "flags": 1
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:2635321585101933522",
+      "lastPropertyId": "4:6251629468545459906",
+      "name": "UrlModel",
+      "properties": [
+        {
+          "id": "1:3524173476791112095",
+          "name": "id",
+          "type": 6
+        },
+        {
+          "id": "3:3552854197591498478",
+          "name": "url",
+          "type": 9
+        },
+        {
+          "id": "4:6251629468545459906",
+          "name": "internalId",
+          "type": 6,
+          "flags": 1
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "3:2635321585101933522",
+  "lastIndexId": "2:4431060515801804632",
+  "lastRelationId": "7:8099576207851513150",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [
+    7870265297517588475,
+    4431060515801804632
+  ],
+  "retiredPropertyUids": [
+    1828583877959372957,
+    3441612801910786614,
+    3609632263623311114,
+    289184620328267347,
+    4006487307378013673,
+    1816333859582944522,
+    3874877058910681991,
+    4914956181373803732,
+    8508172515187046401,
+    5794231984227220894,
+    7203893688290415996,
+    6942285238077573308
+  ],
+  "retiredRelationUids": [],
+  "version": 1
+}

@@ -1,4 +1,4 @@
-import 'package:igdb_games/api/models/game.dart';
+import 'package:igdb_games/data/models/game.dart';
 
 abstract class IgdbDataSource {
   Future<List<Game>> getGames();

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:igdb_games/api/models/game.dart';
+import 'package:igdb_games/data/models/game.dart';
 import 'package:igdb_games/utils/convert_utils.dart';
 
 class GameListTile extends StatelessWidget {

@@ -190,20 +190,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
-  deeply:
-    dependency: transitive
-    description:
-      name: deeply
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.2.0+1"
-  execution_queue:
-    dependency: transitive
-    description:
-      name: execution_queue
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.2.0"
   fake_async:
     dependency: transitive
     description:
@@ -340,20 +326,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
-  objectdb:
+  objectbox:
     dependency: "direct main"
     description:
-      name: objectdb
+      name: objectbox
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.1+1"
-  objectid:
-    dependency: transitive
+    version: "1.0.0"
+  objectbox_flutter_libs:
+    dependency: "direct main"
     description:
-      name: objectid
+      name: objectbox_flutter_libs
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "1.0.0"
+  objectbox_generator:
+    dependency: "direct dev"
+    description:
+      name: objectbox_generator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   package_config:
     dependency: transitive
     description:
