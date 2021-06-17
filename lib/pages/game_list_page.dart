@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:igdb_games/data/igdb_repository.dart';
-import 'package:igdb_games/data/models/game.dart';
-import 'package:igdb_games/di.dart';
+import 'package:igdb_games/locator.dart';
+import 'package:igdb_games/models/game.dart';
+import 'package:igdb_games/pages/game_info_page.dart';
 import 'package:igdb_games/widgets/game_list_tile.dart';
 
 class GameListPage extends StatefulWidget {
@@ -10,7 +11,6 @@ class GameListPage extends StatefulWidget {
 }
 
 class _GameListPageState extends State<GameListPage> {
-  bool _online = true;
   late Future<List<Game>> _gamesFuture;
 
   @override
@@ -20,25 +20,26 @@ class _GameListPageState extends State<GameListPage> {
   }
 
   void _load() {
-    _gamesFuture = locator<IgdbRepository>().getGames(
-      _online ? IgdbRepositorySource.online : IgdbRepositorySource.offline,
-    );
+    _gamesFuture = locator<IgdbRepository>().getGames();
   }
 
   void _onRefresh() => setState(() => _load());
 
-  void _onChangeMode() => setState(() => _online = !_online);
+  void _onGameTap(Game game) {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (_) => GameInfoPage(game: game),
+    ));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'IGDB Explorer ${_online ? '(online)' : '(offline)'}',
+          'IGDB Explorer',
         ),
         actions: [
           _buildRefreshButton(),
-          _buildModeButton(),
         ],
       ),
       body: FutureBuilder<List<Game>>(
@@ -47,10 +48,14 @@ class _GameListPageState extends State<GameListPage> {
           if (snapshot.hasData) {
             final data = snapshot.data!;
             return ListView.builder(
+              padding: const EdgeInsets.all(2.0),
               itemCount: data.length,
               itemBuilder: (context, index) {
                 final game = data[index];
-                return GameListTile(game: game);
+                return GameListTile(
+                  game: game,
+                  onTap: () => _onGameTap(game),
+                );
               },
             );
           }
@@ -60,17 +65,10 @@ class _GameListPageState extends State<GameListPage> {
             );
           }
           return Center(
-            child: Text('Loading'),
+            child: Text('Loading...'),
           );
         },
       ),
-    );
-  }
-
-  Widget _buildModeButton() {
-    return IconButton(
-      icon: Icon(_online ? Icons.wifi : Icons.download_for_offline_sharp),
-      onPressed: _onChangeMode,
     );
   }
 

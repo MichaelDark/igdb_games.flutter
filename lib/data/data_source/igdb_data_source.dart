@@ -1,9 +1,7 @@
-import 'package:igdb_games/data/models/game.dart';
-
-abstract class IgdbDataSource {
-  Future<List<Game>> getGames();
+abstract class IgdbDataSource<T> {
+  Future<List<T>> getGames();
 }
 
-abstract class IgdbLocalDataSource extends IgdbDataSource {
-  Future<void> saveGames(List<Game> games);
+abstract class IgdbLocalDataSource<T> extends IgdbDataSource<T> {
+  Future<void> saveGames(List<T> games);
 }

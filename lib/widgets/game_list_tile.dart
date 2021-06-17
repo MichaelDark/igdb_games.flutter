@@ -1,49 +1,95 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:igdb_games/data/models/game.dart';
-import 'package:igdb_games/utils/convert_utils.dart';
+import 'package:igdb_games/models/game.dart';
 
 class GameListTile extends StatelessWidget {
+  static const _avatarRadius = 36.0;
+  static const _defaultImagePlaceholderUrl =
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqVvzVYtu9kLyHdRVqXsK1xqjG6Xk75zMxt0xmnMHqUYFSrZx3Njt6DoiFjvIM5A6--Ow&usqp=CAU';
+
   final Game game;
+  final VoidCallback? onTap;
 
   const GameListTile({
     Key? key,
     required this.game,
+    this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text('${game.id}'),
-          if (game.category != null) Text('Category: ${game.category}'),
-          if (game.status != null) Text('Status: ${game.status}'),
-          // if (game.createdAt != null)
-          //   _buildTimestamp('Created At', game.createdAt),
-          // if (game.updatedAt != null)
-          //   _buildTimestamp('Updated At', game.updatedAt),
-          // if (game.firstReleaseDate != null)
-          //   _buildTimestamp('First Released', game.firstReleaseDate),
-          if (game.name != null) Text('Name: ${game.name}'),
-          // if (game.slug != null) Text('Slug: ${game.slug}'),
-          // if (game.summary != null) Text('Summary: ${game.summary}'),
-          // if (game.gameModes != null) Text('Modes: ${game.gameModes}'),
-          // if (game.genres != null) Text('Genres: ${game.genres}'),
-          // if (game.keywords != null) Text('Keywords: ${game.keywords}'),
-          // if (game.platforms != null) Text('Platforms: ${game.platforms}'),
-          // if (game.themes != null) Text('Themes: ${game.themes}'),
-          // if (game.screenshots != null)
-          //   Text('Screenshots: ${game.screenshots}'),
-          // if (game.websites != null) Text('Websites: ${game.websites}'),
-        ],
+    return Card(
+      color: Colors.blue[50]!,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(16),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildImage(),
+              Expanded(
+                child: _buildInfo(),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
 
-  Widget _buildTimestamp(String name, int? timestamp) {
-    if (timestamp == null) return Container();
-    return Text('$name: ${parseEpochTimestamp(timestamp)}');
+  Widget _buildImage() {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: CircleAvatar(
+        radius: _avatarRadius,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(_avatarRadius),
+          child: Hero(
+            tag: 'GameImage_${game.id}',
+            child: CachedNetworkImage(
+              imageUrl: game.cover ??
+                  game.screenshots?.firstOrNull ??
+                  _defaultImagePlaceholderUrl,
+              height: 256,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInfo() {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Text(
+            game.name ?? 'Noname game',
+            textAlign: TextAlign.start,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          if (game.summary?.isNotEmpty == true)
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Text(
+                game.summary!,
+                textAlign: TextAlign.start,
+              ),
+            ),
+        ],
+      ),
+    );
   }
 }

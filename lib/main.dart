@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'di.dart';
 import 'igdb_app.dart';
+import 'locator.dart';
 
 void main() {
   setupDI();

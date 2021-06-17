@@ -9,6 +9,7 @@ class IgdbApp extends StatelessWidget {
       title: 'IGDB Explorer',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: Colors.white,
       ),
       home: GameListPage(),
     );

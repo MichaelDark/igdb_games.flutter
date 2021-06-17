@@ -17,7 +17,7 @@ class _$IgdbApi extends IgdbApi {
   final definitionType = IgdbApi;
 
   @override
-  Future<Response<BuiltList<Game>>> getGames(
+  Future<Response<List<ApiGame>>> getGames(
       {required String clientId,
       required String bearerToken,
       required String body}) {
@@ -31,7 +31,7 @@ class _$IgdbApi extends IgdbApi {
     final $body = body;
     final $request =
         Request('POST', $url, client.baseUrl, body: $body, headers: $headers);
-    return client.send<BuiltList<Game>, Game>($request,
+    return client.send<List<ApiGame>, ApiGame>($request,
         requestConverter: IgdbApi.rawRequestConverter);
   }
 }

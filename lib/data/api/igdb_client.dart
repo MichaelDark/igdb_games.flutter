@@ -1,8 +1,7 @@
 import 'package:chopper/chopper.dart';
-import 'package:chopper_built_value/chopper_built_value.dart';
+import 'package:igdb_games/data/models/api_game.dart';
+import 'package:igdb_games/data/models/json_serializable_convertor.dart';
 
-import 'models/game.dart';
-import 'models/serializers.dart';
 import 'services/igdb_api.dart';
 
 class IgdbClient {
@@ -19,13 +18,14 @@ class IgdbClient {
   final chopper = ChopperClient(
     baseUrl: "https://api.igdb.com",
     services: [IgdbApi.create()],
-    converter: BuiltValueConverter(serializers),
-    errorConverter: BuiltValueConverter(serializers),
+    converter: JsonSerializableConverter({
+      ApiGame: (j) => ApiGame.fromJson(j),
+    }),
   );
 
   IgdbApi get _igdbApi => chopper.getService<IgdbApi>();
 
-  Future<List<Game>> getGames() async {
+  Future<List<ApiGame>> getGames() async {
     print(clientId);
     print(bearerToken);
     final response = await _igdbApi.getGames(
@@ -36,7 +36,7 @@ class IgdbClient {
     final success = response.isSuccessful;
 
     if (success) {
-      return response.body!.asList();
+      return response.body!;
     } else {
       throw response.error ?? 'Error fetching games!';
     }
